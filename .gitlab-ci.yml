@@ -1,0 +1,53 @@
+stages:
+  - build
+  - test
+
+variables:
+  BUILD_CONFIGURATION: Release
+
+# Build do Backend
+build-backend:
+  stage: build
+  image: mcr.microsoft.com/dotnet/sdk:7.0
+  script:
+    - echo "Iniciando fase de build"
+    - dotnet restore "Backend/Read.er/Read.er.csproj"
+    - dotnet build "Backend/Read.er/Read.er.csproj" -c $BUILD_CONFIGURATION
+  artifacts:
+    paths:
+      - "Backend/Read.er/bin/$BUILD_CONFIGURATION/"
+    expire_in: 1 week
+
+# Build do Frontend
+build-frontend:
+  stage: build
+  image: ghcr.io/cirruslabs/flutter
+  script:
+    - echo "A iniciar a fase de build do Frontend"
+    - cd Frontend/reader_frontend_app
+    - flutter build web --release --build-number ${CI_JOB_ID:0:8} --no-tree-shake-icons
+  tags:
+    - flutter
+
+# Testes do Backend
+test-backend:
+  stage: test
+  image: mcr.microsoft.com/dotnet/sdk:7.0
+  script:
+    - echo "A iniciar a fase de testes do Backend"
+    - dotnet test "Backend/Reader.Tests/Reader.Tests.csproj" -c $BUILD_CONFIGURATION --verbosity normal
+
+# Testes do Frontend
+test-frontend:
+  stage: test
+  image: ghcr.io/cirruslabs/flutter
+  script:
+    - echo "A iniciar a fase de testes do Frontend"
+    - cd Frontend/reader_frontend_app
+    - flutter test
+  tags:
+    - flutter
+  artifacts:
+    paths:
+      - coverage/
+    expire_in: 1 week

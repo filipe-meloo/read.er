@@ -1,0 +1,66 @@
+# Geral
+.DS_Store
+*.log
+*.lock
+/build/
+.idea/
+.vscode/
+.vs/
+
+# Diretórios e ficheiros do Flutter
+pubspec.lock
+**/flutter_export_environment.sh
+**/ephemeral/
+**/flutter_assets/
+**/shaders/
+android/.gradle/
+android/app/build/
+android/local.properties
+ios/Flutter/
+ios/Runner.xcworkspace/
+ios/Runner.xcodeproj/project.pbxproj
+ios/Runner.xcodeproj/project.xcworkspace/
+ios/Runner.xcodeproj/xcshareddata/
+ios/Runner.xcodeproj/xcuserdata/
+macos/Flutter/ephemeral/
+macos/Runner.xcworkspace/
+macos/Runner.xcodeproj/project.pbxproj
+macos/Runner.xcodeproj/project.xcworkspace/
+macos/Runner.xcodeproj/xcshareddata/
+macos/Runner.xcodeproj/xcuserdata/
+linux/ephemeral/
+windows/flutter/ephemeral/
+windows/flutter/generated_plugins.cmake
+
+# Node.js (se usado)
+node_modules/
+
+# Diretórios e ficheiros do Backend (C# e .NET)
+bin/
+obj/
+**/*.user
+**/*.cache
+*.suo
+*.tmp
+*.ide
+*.userprefs
+**/Migrations/
+
+# Docker
+**/Dockerfile
+**/docker-compose.yml
+**/wait-for-it.sh
+
+# Artifacts do teste
+TestResults/
+*.coverage
+*.trx
+
+# Artifacts de compilação de terceiros
+*.dll
+*.pdb
+*.exe
+*.so
+*.dylib
+*.lib
+

@@ -1,0 +1,94 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>6ca189ae-0bac-4531-bff7-2c75046815c6</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.S3" Version="3.7.410.1" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.20" />
+    <PackageReference Include="Microsoft.AspNetCore.WebSockets" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="7.0.12" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.20.0" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="NuGet.Frameworks" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.20" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.7.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+    <PackageReference Include="Google.Apis.Books.v1" Version="1.68.0.3331" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+		<PackageReference Include="Stripe.net" Version="47.0.0" />
+
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.7.1" />
+		<PackageReference Include="AWSSDK.Core" Version="3.7.400.59" />
+		<PackageReference Include="AWSSDK.SecurityToken" Version="3.7.401.8" />
+		<PackageReference Include="AWSSDK.SQS" Version="3.7.400.59" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="DTOs\" />
+    <None Remove="Models\" />
+    <None Remove="Controllers\" />
+    <None Remove="Data\" />
+    <None Remove="Services\" />
+    <None Remove="Enumerações\" />
+    <None Remove="Interfaces\" />
+    <None Remove="DTOs\WriterBooks\" />
+    <None Remove="DTOs\LibraryBook\" />
+    <None Remove="DTOs\Wishlist\" />
+    <None Remove="DTOs\Community\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="DTOs\WriterBooks\" />
+    <Folder Include="DTOs\LibraryBook\" />
+    <Folder Include="DTOs\Wishlist\" />
+    <Folder Include="DTOs\Community\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="DTOs\RejectBookDto.cs">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Models\Notification.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="model.onnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="publish\CodeCoverage\amd64\VanguardInstrumentationProfiler_x64.config" />
+    <_ContentIncludedByDefault Remove="publish\CodeCoverage\arm64\VanguardInstrumentationProfiler_arm64.config" />
+    <_ContentIncludedByDefault Remove="publish\CodeCoverage\CodeCoverage.config" />
+    <_ContentIncludedByDefault Remove="publish\CodeCoverage\VanguardInstrumentationProfiler_x86.config" />
+    <_ContentIncludedByDefault Remove="publish\InstrumentationEngine\alpine\x64\VanguardInstrumentationProfiler_x64.config" />
+    <_ContentIncludedByDefault Remove="publish\InstrumentationEngine\macos\x64\VanguardInstrumentationProfiler_x64.config" />
+    <_ContentIncludedByDefault Remove="publish\InstrumentationEngine\ubuntu\x64\VanguardInstrumentationProfiler_x64.config" />
+    <_ContentIncludedByDefault Remove="publish\web.config" />
+    <_ContentIncludedByDefault Remove="publish\appsettings.Development.json" />
+    <_ContentIncludedByDefault Remove="publish\appsettings.json" />
+    <_ContentIncludedByDefault Remove="publish\appsettings.secret.json" />
+    <_ContentIncludedByDefault Remove="publish\coverlet.collector.deps.json" />
+    <_ContentIncludedByDefault Remove="publish\Read.er.deps.json" />
+    <_ContentIncludedByDefault Remove="publish\Read.er.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="publish\Reader.Tests.deps.json" />
+    <_ContentIncludedByDefault Remove="publish\Reader.Tests.runtimeconfig.json" />
+  </ItemGroup>
+</Project>
